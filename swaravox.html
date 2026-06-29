@@ -927,6 +927,98 @@
       text-align: center;
     }
 
+    /* Direct Contact Details Section */
+    .contact-container {
+      margin-top: 5rem;
+      text-align: center;
+    }
+    
+    .contact-title {
+      font-size: 2.2rem;
+      margin-bottom: 2.5rem;
+      color: var(--text-primary);
+    }
+    
+    .contact-methods {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5rem;
+      max-width: 960px;
+      margin: 0 auto;
+      text-align: left;
+    }
+    
+    .contact-method-card {
+      background-color: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 2.2rem 2rem;
+      display: flex;
+      flex-direction: column;
+      gap: 1.2rem;
+      transition: all var(--transition);
+    }
+    
+    .contact-method-card:hover {
+      border-color: var(--accent);
+      box-shadow: 0 15px 30px rgba(245, 166, 35, 0.05);
+      transform: translateY(-2px);
+    }
+    
+    .contact-method-card h4 {
+      font-family: 'Inter', sans-serif;
+      font-size: 0.95rem;
+      font-weight: 700;
+      color: var(--text-primary);
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      border-bottom: 1px solid var(--border);
+      padding-bottom: 0.6rem;
+      margin-bottom: 0.2rem;
+    }
+    
+    .contact-link-item {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.6rem;
+      font-size: 0.95rem;
+      color: var(--text-primary);
+      font-weight: 500;
+      transition: color var(--transition);
+    }
+    
+    .contact-link-item:hover {
+      color: var(--accent);
+    }
+    
+    .whatsapp-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      background-color: rgba(16, 185, 129, 0.08);
+      border: 1px solid rgba(16, 185, 129, 0.2);
+      color: var(--success);
+      font-size: 0.75rem;
+      font-weight: 600;
+      padding: 0.25rem 0.6rem;
+      border-radius: 4px;
+      transition: all var(--transition);
+    }
+    
+    .whatsapp-badge:hover {
+      background-color: var(--success);
+      color: #050A18;
+      box-shadow: 0 0 10px rgba(16, 185, 129, 0.3);
+    }
+    
+    .contact-row-group {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 0.5rem;
+      flex-wrap: wrap;
+    }
+
     /* 7. FOOTER */
     footer {
       border-top: 1px solid var(--border);
@@ -1091,6 +1183,12 @@
       }
       .form-row {
         grid-template-columns: 1fr;
+      }
+
+      .contact-methods {
+        grid-template-columns: 1fr;
+        max-width: 480px;
+        margin: 0 auto;
       }
 
       .footer-content {
@@ -1444,6 +1542,55 @@
         
         <p class="form-privacy">No spam. We'll reach out when you're next in line.</p>
       </div>
+
+      <!-- Contact Us Sub-Section -->
+      <div class="contact-container">
+        <h3 class="contact-title">Connect with Us Directly</h3>
+        <div class="contact-methods">
+          
+          <!-- Call & WhatsApp -->
+          <div class="contact-method-card">
+            <h4>Call or WhatsApp</h4>
+            <div class="contact-row-group">
+              <a href="tel:+919949065640" class="contact-link-item">
+                <span>📞</span> +91 99490 65640
+              </a>
+              <a href="https://wa.me/919949065640" target="_blank" class="whatsapp-badge">
+                <span>💬</span> WhatsApp
+              </a>
+            </div>
+            <div class="contact-row-group" style="margin-top: 0.5rem;">
+              <a href="tel:+917673932391" class="contact-link-item">
+                <span>📞</span> +91 76739 32391
+              </a>
+              <a href="https://wa.me/917673932391" target="_blank" class="whatsapp-badge">
+                <span>💬</span> WhatsApp
+              </a>
+            </div>
+          </div>
+
+          <!-- Email -->
+          <div class="contact-method-card">
+            <h4>Email Support</h4>
+            <a href="mailto:abhilashbolla846@gmail.com" class="contact-link-item" style="word-break: break-all;">
+              <span>✉️</span> abhilashbolla846@gmail.com
+            </a>
+          </div>
+
+          <!-- Socials -->
+          <div class="contact-method-card">
+            <h4>Follow Swaravox</h4>
+            <a href="https://instagram.com/Swaravox" target="_blank" class="contact-link-item">
+              <span>📸</span> Instagram
+            </a>
+            <a href="https://linkedin.com/company/swaravox" target="_blank" class="contact-link-item">
+              <span>💼</span> LinkedIn
+            </a>
+          </div>
+
+        </div>
+      </div>
+
     </div>
   </section>
 
