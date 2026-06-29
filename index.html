@@ -864,86 +864,133 @@
       text-align: center;
     }
 
-    /* Direct Contact Grid inside the card */
-    .direct-contact-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 1.5rem;
+    /* Direct Contact List Layout */
+    .direct-contact-list {
       margin-top: 2.5rem;
-      text-align: left;
       border-top: 1px solid var(--border);
-      padding-top: 2rem;
+      padding-top: 1rem;
     }
     
-    .sim-contact-item {
+    .sim-contact-row {
       display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 1.5rem 0;
+      border-bottom: 1px solid rgba(26, 36, 68, 0.5);
+    }
+    
+    .sim-contact-row:last-child {
+      border-bottom: none;
+      padding-bottom: 0;
+    }
+    
+    .sim-row-header {
+      display: flex;
+      align-items: center;
       gap: 0.8rem;
+      min-width: 220px;
+      text-align: left;
     }
     
     .sim-contact-icon {
-      font-size: 1.5rem;
-      line-height: 1;
+      font-size: 1.3rem;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      background-color: rgba(245, 166, 35, 0.1);
+      color: var(--accent);
     }
     
-    .sim-contact-details h5 {
+    .sim-row-header h5 {
       font-family: 'Inter', sans-serif;
       font-size: 0.85rem;
       font-weight: 700;
       color: var(--text-muted);
       text-transform: uppercase;
-      letter-spacing: 0.05em;
-      margin-bottom: 0.6rem;
+      letter-spacing: 0.08em;
+      margin: 0;
     }
     
-    .sim-contact-link {
-      font-size: 0.95rem;
+    .sim-row-content {
+      display: flex;
+      flex-direction: column;
+      gap: 0.8rem;
+      align-items: flex-start;
+      flex: 1;
+      text-align: left;
+      padding-left: 2rem;
+    }
+    
+    .sim-contact-btn-group {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+    
+    .sim-contact-link-new {
+      font-size: 1rem;
       color: var(--text-primary);
       font-weight: 600;
+      text-decoration: none;
       transition: color var(--transition);
+      white-space: nowrap;
     }
     
-    .sim-contact-link:hover {
+    .sim-contact-link-new:hover {
       color: var(--accent);
     }
     
-    .sim-wa-badge {
+    .sim-wa-badge-new {
       display: inline-flex;
       align-items: center;
+      gap: 0.3rem;
       background-color: rgba(16, 185, 129, 0.08);
       border: 1px solid rgba(16, 185, 129, 0.2);
       color: var(--success);
-      font-size: 0.7rem;
+      font-size: 0.8rem;
       font-weight: 700;
-      padding: 0.15rem 0.5rem;
-      border-radius: 4px;
-      margin-left: 0.5rem;
+      padding: 0.3rem 0.7rem;
+      border-radius: 6px;
+      text-decoration: none;
       transition: all var(--transition);
+      white-space: nowrap;
     }
     
-    .sim-wa-badge:hover {
+    .sim-wa-badge-new:hover {
       background-color: var(--success);
       color: #050A18;
+      box-shadow: 0 0 10px rgba(16, 185, 129, 0.2);
     }
     
-    .sim-contact-links {
-      display: flex;
+    .sim-row-content.social-row {
+      flex-direction: row;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+    
+    .sim-social-badge {
+      display: inline-flex;
       align-items: center;
-    }
-    
-    .sim-social-links {
-      display: flex;
-      flex-direction: column;
-      gap: 0.5rem;
-    }
-    
-    .sim-social-link {
-      font-size: 0.9rem;
+      gap: 0.4rem;
+      background-color: rgba(238, 242, 255, 0.03);
+      border: 1px solid var(--border);
       color: var(--text-primary);
-      font-weight: 500;
-      transition: color var(--transition);
+      font-size: 0.85rem;
+      font-weight: 600;
+      padding: 0.4rem 0.8rem;
+      border-radius: 6px;
+      text-decoration: none;
+      transition: all var(--transition);
+      white-space: nowrap;
     }
     
-    .sim-social-link:hover {
+    .sim-social-badge:hover {
+      border-color: var(--accent);
+      background-color: rgba(245, 166, 35, 0.05);
       color: var(--accent);
     }
 
@@ -1113,9 +1160,22 @@
         grid-template-columns: 1fr;
       }
 
-      .direct-contact-grid {
-        grid-template-columns: 1fr;
-        gap: 2rem;
+      .sim-contact-row {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 1rem;
+        padding: 1.2rem 0;
+      }
+      .sim-row-content {
+        padding-left: 0;
+        width: 100%;
+      }
+      .sim-row-content.social-row {
+        flex-direction: column;
+        align-items: stretch;
+      }
+      .sim-social-badge {
+        justify-content: center;
       }
 
       .footer-content {
@@ -1432,44 +1492,48 @@
           Ready to deploy an intelligent voice agent for your business? Connect with us directly via phone, WhatsApp, email, or socials for a free consultation and custom interactive demo.
         </p>
 
-        <div class="direct-contact-grid">
+        <div class="direct-contact-list">
           
           <!-- Call & WhatsApp -->
-          <div class="sim-contact-item">
-            <span class="sim-contact-icon">📞</span>
-            <div class="sim-contact-details">
+          <div class="sim-contact-row">
+            <div class="sim-row-header">
+              <span class="sim-contact-icon">📞</span>
               <h5>Call or WhatsApp Us</h5>
-              <div class="sim-contact-links">
-                <a href="tel:+919949065640" class="sim-contact-link">+91 99490 65640</a>
-                <a href="https://wa.me/919949065640" target="_blank" class="sim-wa-badge">WhatsApp</a>
+            </div>
+            <div class="sim-row-content">
+              <div class="sim-contact-btn-group">
+                <a href="tel:+919949065640" class="sim-contact-link-new">+91 99490 65640</a>
+                <a href="https://wa.me/919949065640" target="_blank" class="sim-wa-badge-new">💬 Chat on WhatsApp</a>
               </div>
-              <div class="sim-contact-links" style="margin-top: 0.6rem;">
-                <a href="tel:+917673932391" class="sim-contact-link">+91 76739 32391</a>
-                <a href="https://wa.me/917673932391" target="_blank" class="sim-wa-badge">WhatsApp</a>
+              <div class="sim-contact-btn-group">
+                <a href="tel:+917673932391" class="sim-contact-link-new">+91 76739 32391</a>
+                <a href="https://wa.me/917673932391" target="_blank" class="sim-wa-badge-new">💬 Chat on WhatsApp</a>
               </div>
             </div>
           </div>
           
-          <!-- Email -->
-          <div class="sim-contact-item">
-            <span class="sim-contact-icon">✉️</span>
-            <div class="sim-contact-details">
+          <!-- Email Support -->
+          <div class="sim-contact-row">
+            <div class="sim-row-header">
+              <span class="sim-contact-icon">✉️</span>
               <h5>Email Support</h5>
-              <a href="mailto:iam.swaravox@gmail.com" class="sim-contact-link">iam.swaravox@gmail.com</a>
-              <a href="mailto:abhilashbolla846@gmail.com" class="sim-contact-link" style="margin-top: 0.6rem; display: block;">abhilashbolla846@gmail.com</a>
+            </div>
+            <div class="sim-row-content">
+              <a href="mailto:iam.swaravox@gmail.com" class="sim-contact-link-new">iam.swaravox@gmail.com</a>
+              <a href="mailto:abhilashbolla846@gmail.com" class="sim-contact-link-new">abhilashbolla846@gmail.com</a>
             </div>
           </div>
           
           <!-- Socials -->
-          <div class="sim-contact-item">
-            <span class="sim-contact-icon">🌐</span>
-            <div class="sim-contact-details">
+          <div class="sim-contact-row">
+            <div class="sim-row-header">
+              <span class="sim-contact-icon">🌐</span>
               <h5>Follow Swaravox</h5>
-              <div class="sim-social-links">
-                <a href="https://x.com/Swaravox" target="_blank" class="sim-social-link">🐦 X (Twitter)</a>
-                <a href="https://instagram.com/Swaravox" target="_blank" class="sim-social-link">📸 Instagram</a>
-                <a href="https://linkedin.com/company/swaravox" target="_blank" class="sim-social-link">💼 LinkedIn</a>
-              </div>
+            </div>
+            <div class="sim-row-content social-row">
+              <a href="https://x.com/Swaravox" target="_blank" class="sim-social-badge">🐦 X (Twitter)</a>
+              <a href="https://instagram.com/Swaravox" target="_blank" class="sim-social-badge">📸 Instagram</a>
+              <a href="https://linkedin.com/company/swaravox" target="_blank" class="sim-social-badge">💼 LinkedIn</a>
             </div>
           </div>
 
