@@ -1,0 +1,1716 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Swaravox — Intelligent AI Voice Agents for High-Growth Businesses</title>
+  <meta name="description" content="Deploy human-like, intelligent AI voice agents for Real Estate, Healthcare, Education, and Legal businesses in the US, UK, and Australia. 24/7 lead qualification, booking, and intake.">
+  
+  <!-- Typography CDN -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --bg: #050A18;
+      --bg-navy: #0A1128;
+      --card: #0D1530;
+      --border: #1A2444;
+      --accent: #F5A623;
+      --accent-rgb: 245, 166, 35;
+      --text-primary: #EEF2FF;
+      --text-muted: #6B7A99;
+      --success: #10B981;
+      --error: #EF4444;
+      --transition: 0.2s ease;
+    }
+
+    /* Reset & Base Styles */
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      background-color: var(--bg);
+      color: var(--text-primary);
+      font-family: 'Inter', sans-serif;
+      line-height: 1.6;
+      overflow-x: hidden;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* Custom Scrollbar */
+    ::-webkit-scrollbar {
+      width: 8px;
+    }
+    ::-webkit-scrollbar-track {
+      background: var(--bg);
+    }
+    ::-webkit-scrollbar-thumb {
+      background: var(--border);
+      border-radius: 4px;
+    }
+    ::-webkit-scrollbar-thumb:hover {
+      background: var(--accent);
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+      transition: var(--transition);
+    }
+
+    input, select, button {
+      font-family: inherit;
+      font-size: inherit;
+    }
+
+    /* Typography */
+    h1, h2, h3 {
+      font-family: 'DM Serif Display', serif;
+      font-weight: 400;
+      line-height: 1.2;
+    }
+
+    .container {
+      width: 100%;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 2rem;
+    }
+
+    /* Buttons */
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0.8rem 1.8rem;
+      border-radius: 6px;
+      font-weight: 600;
+      transition: all var(--transition);
+      cursor: pointer;
+      gap: 0.5rem;
+    }
+
+    .btn-primary {
+      background-color: var(--accent);
+      color: #050A18;
+      border: 1px solid var(--accent);
+    }
+
+    .btn-primary:hover {
+      background-color: transparent;
+      color: var(--accent);
+      box-shadow: 0 0 15px rgba(var(--accent-rgb), 0.3);
+    }
+
+    .btn-secondary {
+      background-color: transparent;
+      color: var(--text-primary);
+      border: 1px solid var(--border);
+    }
+
+    .btn-secondary:hover {
+      border-color: var(--accent);
+      color: var(--accent);
+    }
+
+    /* 1. FIXED NAV */
+    .nav-wrapper {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      z-index: 1000;
+      transition: all 0.3s ease;
+      border-bottom: 1px solid transparent;
+    }
+
+    .nav-wrapper.scrolled {
+      background: rgba(5, 10, 24, 0.85);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+    }
+
+    nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      height: 80px;
+    }
+
+    .logo {
+      font-family: 'DM Serif Display', serif;
+      font-size: 1.8rem;
+      color: var(--accent);
+      display: flex;
+      align-items: baseline;
+      gap: 0.25rem;
+    }
+
+    .logo span {
+      font-family: 'Inter', sans-serif;
+      font-size: 0.8rem;
+      font-weight: 600;
+      color: var(--text-muted);
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 2.5rem;
+      align-items: center;
+    }
+
+    .nav-links a {
+      color: var(--text-primary);
+      font-weight: 500;
+      font-size: 0.95rem;
+    }
+
+    .nav-links a:hover {
+      color: var(--accent);
+    }
+
+    .nav-cta {
+      display: flex;
+      align-items: center;
+    }
+
+    .nav-toggle {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      cursor: pointer;
+      border: none;
+      background: transparent;
+      padding: 5px;
+    }
+
+    .nav-toggle span {
+      display: block;
+      width: 25px;
+      height: 2px;
+      background-color: var(--text-primary);
+      transition: var(--transition);
+    }
+
+    /* 2. HERO SECTION */
+    .hero {
+      padding: 160px 0 100px 0;
+      background: radial-gradient(circle at 50% 0%, rgba(13, 21, 48, 0.8) 0%, rgba(5, 10, 24, 1) 70%);
+      text-align: center;
+    }
+
+    .hero-content {
+      max-width: 800px;
+      margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.6rem;
+      background-color: rgba(245, 166, 35, 0.08);
+      border: 1px solid rgba(245, 166, 35, 0.25);
+      color: var(--accent);
+      padding: 0.5rem 1.2rem;
+      border-radius: 50px;
+      font-size: 0.85rem;
+      font-weight: 600;
+      margin-bottom: 2rem;
+      letter-spacing: 0.02em;
+    }
+
+    .badge-dot {
+      width: 8px;
+      height: 8px;
+      background-color: var(--accent);
+      border-radius: 50%;
+      box-shadow: 0 0 10px var(--accent);
+      animation: pulse-dot 1.5s infinite;
+    }
+
+    @keyframes pulse-dot {
+      0% {
+        transform: scale(0.95);
+        box-shadow: 0 0 0 0 rgba(245, 166, 35, 0.7);
+      }
+      70% {
+        transform: scale(1);
+        box-shadow: 0 0 0 6px rgba(245, 166, 35, 0);
+      }
+      100% {
+        transform: scale(0.95);
+        box-shadow: 0 0 0 0 rgba(245, 166, 35, 0);
+      }
+    }
+
+    .hero h1 {
+      font-size: 4rem;
+      margin-bottom: 1.5rem;
+      color: var(--text-primary);
+      max-width: 900px;
+    }
+
+    .hero h1 em {
+      font-style: italic;
+      color: var(--accent);
+    }
+
+    .hero-subtext {
+      font-size: 1.2rem;
+      color: var(--text-muted);
+      margin-bottom: 3.5rem;
+      max-width: 680px;
+      font-weight: 300;
+    }
+
+    /* WAVEFORM SIGNATURE ELEMENT */
+    .waveform {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 5px;
+      height: 60px;
+      margin-bottom: 1.5rem;
+    }
+
+    .waveform-bar {
+      width: 4px;
+      height: 8px;
+      background-color: var(--accent);
+      border-radius: 20px;
+      opacity: 0.25;
+      transition: height 0.2s ease, opacity 0.2s ease;
+    }
+
+    @keyframes waveform-active {
+      0%, 100% {
+        height: 8px;
+      }
+      50% {
+        height: 52px;
+      }
+    }
+
+    .waveform.active .waveform-bar {
+      opacity: 1;
+      animation: waveform-active 1.2s ease-in-out infinite;
+    }
+
+    /* Waveform delays for sine wave pattern */
+    .waveform.active .waveform-bar:nth-child(1)  { animation-delay: 0.00s; }
+    .waveform.active .waveform-bar:nth-child(2)  { animation-delay: 0.08s; }
+    .waveform.active .waveform-bar:nth-child(3)  { animation-delay: 0.16s; }
+    .waveform.active .waveform-bar:nth-child(4)  { animation-delay: 0.24s; }
+    .waveform.active .waveform-bar:nth-child(5)  { animation-delay: 0.32s; }
+    .waveform.active .waveform-bar:nth-child(6)  { animation-delay: 0.40s; }
+    .waveform.active .waveform-bar:nth-child(7)  { animation-delay: 0.48s; }
+    .waveform.active .waveform-bar:nth-child(8)  { animation-delay: 0.56s; }
+    .waveform.active .waveform-bar:nth-child(9)  { animation-delay: 0.64s; }
+    .waveform.active .waveform-bar:nth-child(10) { animation-delay: 0.72s; }
+    .waveform.active .waveform-bar:nth-child(11) { animation-delay: 0.80s; }
+    .waveform.active .waveform-bar:nth-child(12) { animation-delay: 0.88s; }
+    .waveform.active .waveform-bar:nth-child(13) { animation-delay: 0.96s; }
+    .waveform.active .waveform-bar:nth-child(14) { animation-delay: 1.04s; }
+    .waveform.active .waveform-bar:nth-child(15) { animation-delay: 1.12s; }
+
+    /* VAPI LIVE DEMO WIDGET */
+    .widget-container {
+      width: 100%;
+      max-width: 480px;
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 1.8rem;
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+      transition: border-color 0.3s ease, box-shadow 0.3s ease;
+      text-align: left;
+      margin-bottom: 4rem;
+    }
+
+    .widget-container.active-call {
+      border-color: var(--accent);
+      box-shadow: 0 20px 40px rgba(245, 166, 35, 0.1);
+    }
+
+    .widget-header {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .avatar-wrapper {
+      position: relative;
+      width: 48px;
+      height: 48px;
+      background: linear-gradient(135deg, rgba(245, 166, 35, 0.2) 0%, rgba(245, 166, 35, 0.05) 100%);
+      border: 1px solid rgba(245, 166, 35, 0.3);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.4rem;
+    }
+
+    .online-indicator {
+      position: absolute;
+      bottom: 2px;
+      right: 2px;
+      width: 10px;
+      height: 10px;
+      background-color: var(--success);
+      border: 2px solid var(--card);
+      border-radius: 50%;
+    }
+
+    .agent-info h4 {
+      font-family: 'Inter', sans-serif;
+      font-weight: 600;
+      color: var(--text-primary);
+      font-size: 1.05rem;
+    }
+
+    .agent-info p {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+    }
+
+    .status-line {
+      font-size: 0.9rem;
+      color: var(--text-muted);
+      margin-bottom: 1.5rem;
+      padding: 0.6rem 0.8rem;
+      background-color: rgba(5, 10, 24, 0.4);
+      border-left: 3px solid var(--border);
+      border-radius: 0 4px 4px 0;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    /* Scrollable Transcript Box */
+    .transcript-box {
+      height: 150px;
+      background-color: rgba(5, 10, 24, 0.6);
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      padding: 1rem;
+      margin-bottom: 1.5rem;
+      overflow-y: auto;
+      display: none; /* Hidden until call starts */
+    }
+
+    .transcript-line {
+      font-size: 0.85rem;
+      margin-bottom: 0.8rem;
+      line-height: 1.4;
+    }
+
+    .transcript-line:last-child {
+      margin-bottom: 0;
+    }
+
+    .transcript-line.assistant {
+      color: var(--accent);
+    }
+
+    .transcript-line.user {
+      color: var(--text-primary);
+    }
+
+    .role-label {
+      font-weight: 700;
+      margin-right: 0.25rem;
+    }
+
+    /* Demo Button states */
+    .vapi-btn {
+      width: 100%;
+      border-radius: 6px;
+      border: none;
+      padding: 1rem;
+      font-weight: 600;
+      font-size: 1rem;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.75rem;
+      transition: all 0.3s ease;
+      color: #050A18;
+      background-color: var(--accent);
+    }
+
+    .vapi-btn:hover {
+      box-shadow: 0 0 20px rgba(var(--accent-rgb), 0.4);
+      transform: translateY(-1px);
+    }
+
+    .vapi-btn.active {
+      background-color: var(--error);
+      color: #ffffff;
+      animation: button-pulse-red 1.5s infinite;
+    }
+
+    .vapi-btn.active:hover {
+      box-shadow: 0 0 20px rgba(239, 68, 68, 0.4);
+    }
+
+    @keyframes button-pulse-red {
+      0% {
+        box-shadow: 0 0 0 0 rgba(239, 68, 68, 0.6);
+      }
+      70% {
+        box-shadow: 0 0 0 10px rgba(239, 68, 68, 0);
+      }
+      100% {
+        box-shadow: 0 0 0 0 rgba(239, 68, 68, 0);
+      }
+    }
+
+    /* Simulator Selector Controls */
+    .simulator-controls {
+      margin-bottom: 1.5rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+    }
+    
+    .simulator-controls label {
+      font-size: 0.75rem;
+      color: var(--text-muted);
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+    }
+    
+    .select-wrapper {
+      position: relative;
+      width: 100%;
+    }
+    
+    .sim-select {
+      width: 100%;
+      background-color: rgba(5, 10, 24, 0.5);
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      padding: 0.8rem 1rem;
+      color: var(--text-primary);
+      font-size: 0.95rem;
+      outline: none;
+      transition: all var(--transition);
+      cursor: pointer;
+      appearance: none;
+      background-image: url("data:image/svg+xml;utf8,<svg fill='%23F5A623' height='24' viewBox='0 0 24 24' width='24' xmlns='http://www.w3.org/2000/svg'><path d='M7 10l5 5 5-5z'/><path d='M0 0h24v24H0z' fill='none'/></svg>");
+      background-repeat: no-repeat;
+      background-position: right 1rem center;
+      background-size: 1.2rem;
+      padding-right: 2.5rem;
+    }
+    
+    .sim-select:focus {
+      border-color: var(--accent);
+      box-shadow: 0 0 10px rgba(245, 166, 35, 0.15);
+    }
+
+    /* Trust Bar */
+    .trust-bar {
+      display: flex;
+      justify-content: center;
+      gap: 3rem;
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+      padding: 1.8rem 0;
+      max-width: 900px;
+      width: 100%;
+      margin-top: 2rem;
+    }
+
+    .trust-item {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .trust-val {
+      font-size: 1.4rem;
+      font-weight: 700;
+      color: var(--text-primary);
+    }
+
+    .trust-label {
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      margin-top: 0.2rem;
+    }
+
+    /* 3. HOW IT WORKS (Dark navy alternative bg) */
+    .how-it-works {
+      padding: 100px 0;
+      background-color: var(--bg-navy);
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+      text-align: center;
+    }
+
+    .section-eyebrow {
+      color: var(--accent);
+      font-size: 0.85rem;
+      font-weight: 700;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      margin-bottom: 1rem;
+      display: block;
+    }
+
+    .section-title {
+      font-size: 2.8rem;
+      margin-bottom: 4rem;
+      color: var(--text-primary);
+    }
+
+    .step-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 0;
+      position: relative;
+    }
+
+    .step-card {
+      background-color: transparent;
+      padding: 2.5rem 1.8rem;
+      text-align: left;
+      position: relative;
+    }
+
+    .step-card:not(:last-child)::after {
+      content: '';
+      position: absolute;
+      top: 30%;
+      right: 0;
+      width: 1px;
+      height: 40%;
+      background: linear-gradient(to bottom, transparent, rgba(245, 166, 35, 0.4), transparent);
+    }
+
+    .step-num {
+      font-size: 0.85rem;
+      color: var(--accent);
+      font-weight: 700;
+      margin-bottom: 1.5rem;
+      display: block;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+
+    .step-emoji {
+      font-size: 2.2rem;
+      margin-bottom: 1rem;
+      display: inline-block;
+    }
+
+    .step-card h3 {
+      font-family: 'Inter', sans-serif;
+      font-weight: 600;
+      font-size: 1.25rem;
+      margin-bottom: 0.8rem;
+      color: var(--text-primary);
+    }
+
+    .step-card p {
+      font-size: 0.95rem;
+      color: var(--text-muted);
+      font-weight: 300;
+    }
+
+    /* 4. INDUSTRIES */
+    .industries {
+      padding: 100px 0;
+      text-align: center;
+    }
+
+    .industry-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 2rem;
+      margin-top: 4rem;
+    }
+
+    .industry-card {
+      background-color: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 3rem;
+      text-align: left;
+      transition: transform 0.3s cubic-bezier(0.25, 0.8, 0.25, 1), border-color 0.3s ease, box-shadow 0.3s ease;
+      cursor: pointer;
+    }
+
+    .industry-card:hover {
+      transform: translateY(-3px);
+      border-color: var(--accent);
+      box-shadow: 0 15px 30px rgba(245, 166, 35, 0.06);
+    }
+
+    .industry-header {
+      display: flex;
+      align-items: center;
+      gap: 1.2rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .industry-icon-wrapper {
+      width: 48px;
+      height: 48px;
+      background: rgba(245, 166, 35, 0.08);
+      border: 1px solid rgba(245, 166, 35, 0.2);
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--accent);
+    }
+
+    .industry-icon {
+      width: 24px;
+      height: 24px;
+    }
+
+    .industry-card h3 {
+      font-size: 1.8rem;
+      color: var(--text-primary);
+      margin: 0;
+    }
+
+    .industry-desc {
+      font-size: 1.05rem;
+      color: var(--text-muted);
+      margin-bottom: 2rem;
+      font-weight: 300;
+    }
+
+    .tag-container {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.6rem;
+    }
+
+    .tag-pill {
+      background-color: rgba(245, 166, 35, 0.06);
+      border: 1px solid rgba(245, 166, 35, 0.15);
+      color: var(--accent);
+      font-size: 0.75rem;
+      font-weight: 600;
+      padding: 0.35rem 0.9rem;
+      border-radius: 50px;
+      letter-spacing: 0.01em;
+    }
+
+    /* 5. PRICING TEASER */
+    .pricing-teaser {
+      padding: 100px 0;
+      background-color: var(--bg-navy);
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+      text-align: center;
+    }
+
+    .pricing-teaser .section-title {
+      margin-bottom: 1.5rem;
+    }
+
+    .pricing-subtitle {
+      font-size: 1.15rem;
+      color: var(--text-muted);
+      max-width: 600px;
+      margin: 0 auto 3rem auto;
+      font-weight: 300;
+    }
+
+    .pricing-btn {
+      font-size: 1.1rem;
+      padding: 1rem 2.2rem;
+      margin-bottom: 4rem;
+    }
+
+    .value-props-row {
+      display: inline-flex;
+      justify-content: center;
+      gap: 4rem;
+      border: 1px solid var(--border);
+      background-color: rgba(5, 10, 24, 0.4);
+      padding: 1.2rem 3rem;
+      border-radius: 80px;
+      max-width: 90% ;
+    }
+
+    .value-prop {
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+      font-size: 0.9rem;
+      color: var(--text-primary);
+      font-weight: 500;
+    }
+
+    .value-prop span {
+      font-size: 1.2rem;
+    }
+
+    /* 6. WAITLIST / EARLY ACCESS */
+    .waitlist {
+      padding: 120px 0;
+      text-align: center;
+      background: radial-gradient(circle at 50% 100%, rgba(13, 21, 48, 0.5) 0%, rgba(5, 10, 24, 1) 80%);
+    }
+
+    .waitlist-card {
+      max-width: 640px;
+      margin: 0 auto;
+      background-color: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 4rem 3rem;
+      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
+    }
+
+    .waitlist-subtitle {
+      font-size: 1.1rem;
+      color: var(--text-muted);
+      margin-bottom: 3rem;
+      font-weight: 300;
+    }
+
+    .waitlist-form {
+      display: flex;
+      flex-direction: column;
+      gap: 1.2rem;
+      text-align: left;
+    }
+
+    .form-row {
+      display: grid;
+      grid-template-columns: 2fr 1.2fr;
+      gap: 1rem;
+    }
+
+    .form-group {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .form-input, .form-select {
+      background-color: var(--bg);
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      padding: 0.9rem 1.2rem;
+      color: var(--text-primary);
+      font-size: 1rem;
+      outline: none;
+      transition: all var(--transition);
+      width: 100%;
+    }
+
+    .form-input:focus, .form-select:focus {
+      border-color: var(--accent);
+      box-shadow: 0 0 10px rgba(245, 166, 35, 0.1);
+    }
+
+    .form-select {
+      appearance: none;
+      background-image: url("data:image/svg+xml;utf8,<svg fill='%23F5A623' height='24' viewBox='0 0 24 24' width='24' xmlns='http://www.w3.org/2000/svg'><path d='M7 10l5 5 5-5z'/><path d='M0 0h24v24H0z' fill='none'/></svg>");
+      background-repeat: no-repeat;
+      background-position: right 1rem center;
+      background-size: 1.2rem;
+      padding-right: 2.5rem;
+      cursor: pointer;
+    }
+
+    .form-select option {
+      background-color: var(--card);
+      color: var(--text-primary);
+    }
+
+    .form-submit-btn {
+      width: 100%;
+      padding: 1rem;
+      font-size: 1.05rem;
+      font-weight: 700;
+      border: none;
+    }
+
+    .form-privacy {
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      margin-top: 1.5rem;
+      text-align: center;
+    }
+
+    /* Direct Contact Details Section */
+    .contact-container {
+      margin-top: 5rem;
+      text-align: center;
+    }
+    
+    .contact-title {
+      font-size: 2.2rem;
+      margin-bottom: 2.5rem;
+      color: var(--text-primary);
+    }
+    
+    .contact-methods {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5rem;
+      max-width: 960px;
+      margin: 0 auto;
+      text-align: left;
+    }
+    
+    .contact-method-card {
+      background-color: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 2.2rem 2rem;
+      display: flex;
+      flex-direction: column;
+      gap: 1.2rem;
+      transition: all var(--transition);
+    }
+    
+    .contact-method-card:hover {
+      border-color: var(--accent);
+      box-shadow: 0 15px 30px rgba(245, 166, 35, 0.05);
+      transform: translateY(-2px);
+    }
+    
+    .contact-method-card h4 {
+      font-family: 'Inter', sans-serif;
+      font-size: 0.95rem;
+      font-weight: 700;
+      color: var(--text-primary);
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      border-bottom: 1px solid var(--border);
+      padding-bottom: 0.6rem;
+      margin-bottom: 0.2rem;
+    }
+    
+    .contact-link-item {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.6rem;
+      font-size: 0.95rem;
+      color: var(--text-primary);
+      font-weight: 500;
+      transition: color var(--transition);
+    }
+    
+    .contact-link-item:hover {
+      color: var(--accent);
+    }
+    
+    .whatsapp-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      background-color: rgba(16, 185, 129, 0.08);
+      border: 1px solid rgba(16, 185, 129, 0.2);
+      color: var(--success);
+      font-size: 0.75rem;
+      font-weight: 600;
+      padding: 0.25rem 0.6rem;
+      border-radius: 4px;
+      transition: all var(--transition);
+    }
+    
+    .whatsapp-badge:hover {
+      background-color: var(--success);
+      color: #050A18;
+      box-shadow: 0 0 10px rgba(16, 185, 129, 0.3);
+    }
+    
+    .contact-row-group {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 0.5rem;
+      flex-wrap: wrap;
+    }
+
+    /* 7. FOOTER */
+    footer {
+      border-top: 1px solid var(--border);
+      padding: 40px 0;
+      background-color: var(--bg);
+    }
+
+    .footer-content {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .footer-logo {
+      font-family: 'DM Serif Display', serif;
+      font-size: 1.5rem;
+      color: var(--accent);
+      display: flex;
+      align-items: baseline;
+      gap: 0.2rem;
+    }
+
+    .footer-logo span {
+      font-family: 'Inter', sans-serif;
+      font-size: 0.7rem;
+      font-weight: 600;
+      color: var(--text-muted);
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+    }
+
+    .footer-links {
+      display: flex;
+      gap: 2rem;
+      font-size: 0.9rem;
+      color: var(--text-muted);
+    }
+
+    .footer-links a:hover {
+      color: var(--accent);
+    }
+
+    .footer-copy {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+    }
+
+    /* MOBILE NAVIGATION DRAWER */
+    .mobile-nav {
+      position: fixed;
+      top: 80px;
+      left: 0;
+      width: 100%;
+      height: 0;
+      background-color: var(--bg);
+      border-bottom: 1px solid var(--border);
+      overflow: hidden;
+      transition: height 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      z-index: 999;
+      display: flex;
+      flex-direction: column;
+      padding: 0 2rem;
+    }
+
+    .mobile-nav.open {
+      height: 250px;
+      padding-top: 2rem;
+      padding-bottom: 2rem;
+    }
+
+    .mobile-nav a {
+      font-size: 1.2rem;
+      font-weight: 500;
+      padding: 0.8rem 0;
+      border-bottom: 1px solid rgba(26, 36, 68, 0.4);
+    }
+
+    .mobile-nav .btn-nav-mobile {
+      margin-top: 1.5rem;
+      width: 100%;
+    }
+
+    /* RESPONSIVENESS */
+    @media (max-width: 1024px) {
+      .hero h1 {
+        font-size: 3.2rem;
+      }
+      .step-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+      .step-card:nth-child(2)::after {
+        display: none;
+      }
+      .step-card {
+        padding: 2rem 1.5rem;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .nav-links, .nav-cta {
+        display: none;
+      }
+      .nav-toggle {
+        display: flex;
+      }
+      /* Hamburger animations */
+      .nav-toggle.open span:nth-child(1) {
+        transform: translateY(7px) rotate(45deg);
+      }
+      .nav-toggle.open span:nth-child(2) {
+        opacity: 0;
+      }
+      .nav-toggle.open span:nth-child(3) {
+        transform: translateY(-7px) rotate(-45deg);
+      }
+
+      .hero h1 {
+        font-size: 2.5rem;
+      }
+      .hero-subtext {
+        font-size: 1.05rem;
+        margin-bottom: 2.5rem;
+      }
+      .trust-bar {
+        flex-direction: column;
+        gap: 1.5rem;
+        padding: 1.5rem 0;
+      }
+      .trust-item {
+        border-bottom: 1px solid rgba(26, 36, 68, 0.4);
+        padding-bottom: 1rem;
+      }
+      .trust-item:last-child {
+        border-bottom: none;
+        padding-bottom: 0;
+      }
+      
+      .step-grid {
+        grid-template-columns: 1fr;
+      }
+      .step-card::after {
+        display: none !important;
+      }
+      
+      .industry-grid {
+        grid-template-columns: 1fr;
+      }
+      .industry-card {
+        padding: 2rem;
+      }
+      
+      .value-props-row {
+        flex-direction: column;
+        gap: 1rem;
+        border-radius: 12px;
+        padding: 1.5rem;
+        width: 100%;
+      }
+      
+      .waitlist-card {
+        padding: 2.5rem 1.5rem;
+      }
+      .form-row {
+        grid-template-columns: 1fr;
+      }
+
+      .contact-methods {
+        grid-template-columns: 1fr;
+        max-width: 480px;
+        margin: 0 auto;
+      }
+
+      .footer-content {
+        flex-direction: column;
+        gap: 2rem;
+        text-align: center;
+      }
+      .footer-links {
+        flex-direction: column;
+        align-items: center;
+        gap: 1rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- 1. FIXED NAV -->
+  <div class="nav-wrapper" id="navbar">
+    <div class="container">
+      <nav>
+        <a href="#" class="logo">Swaravox<span>AI</span></a>
+        
+        <div class="nav-links">
+          <a href="#how-it-works">How It Works</a>
+          <a href="#industries">Industries</a>
+          <a href="#pricing">Pricing</a>
+        </div>
+        
+        <div class="nav-cta">
+          <a href="#early-access" class="btn btn-primary">Get Early Access</a>
+        </div>
+
+        <button class="nav-toggle" id="nav-toggle" aria-label="Toggle navigation">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+      </nav>
+    </div>
+  </div>
+
+  <!-- Mobile Drawer -->
+  <div class="mobile-nav" id="mobile-menu">
+    <a href="#how-it-works" class="mobile-link">How It Works</a>
+    <a href="#industries" class="mobile-link">Industries</a>
+    <a href="#pricing" class="mobile-link">Pricing</a>
+    <a href="#early-access" class="btn btn-primary btn-nav-mobile mobile-link">Get Early Access</a>
+  </div>
+
+  <!-- 2. HERO SECTION -->
+  <section class="hero">
+    <div class="container">
+      <div class="hero-content">
+        
+        <!-- Simulator status badge -->
+        <div class="badge">
+          <span class="badge-dot"></span>
+          Interactive Demo — Simulate an AI Voice Call
+        </div>
+        
+        <!-- Headline -->
+        <h1>Your Business Deserves a Voice That <em>Never Stops</em></h1>
+        
+        <!-- Subheading -->
+        <p class="hero-subtext">
+          Swaravox deploys AI voice agents that answer calls, qualify leads, and book appointments — 24 hours a day, across every industry.
+        </p>
+
+        <!-- Waveform Signature Element -->
+        <div class="waveform" id="waveform">
+          <div class="waveform-bar"></div>
+          <div class="waveform-bar"></div>
+          <div class="waveform-bar"></div>
+          <div class="waveform-bar"></div>
+          <div class="waveform-bar"></div>
+          <div class="waveform-bar"></div>
+          <div class="waveform-bar"></div>
+          <div class="waveform-bar"></div>
+          <div class="waveform-bar"></div>
+          <div class="waveform-bar"></div>
+          <div class="waveform-bar"></div>
+          <div class="waveform-bar"></div>
+          <div class="waveform-bar"></div>
+          <div class="waveform-bar"></div>
+          <div class="waveform-bar"></div>
+        </div>
+
+        <!-- MOCK CALL SIMULATOR WIDGET -->
+        <div class="widget-container" id="widget-container">
+          <div class="widget-header">
+            <div class="avatar-wrapper">
+              🎙
+              <span class="online-indicator"></span>
+            </div>
+            <div class="agent-info">
+              <h4>Aria · Swaravox AI</h4>
+              <p>AI Voice Agent Simulator</p>
+            </div>
+          </div>
+
+          <!-- Industry Selector inside the Widget -->
+          <div class="simulator-controls">
+            <label for="sim-industry">Choose AI Agent Specialization</label>
+            <div class="select-wrapper">
+              <select id="sim-industry" class="sim-select">
+                <option value="real-estate">🏠 Real Estate Agent (Sydney)</option>
+                <option value="healthcare">🏥 Healthcare Clinic Assistant</option>
+                <option value="education">🎓 Academy Admissions Officer</option>
+                <option value="legal">⚖️ Legal Client Intake Assistant</option>
+              </select>
+            </div>
+          </div>
+
+          <!-- Dynamic Status -->
+          <div class="status-line" id="status-line">
+            <span id="status-text">Choose an industry agent and start the call simulation.</span>
+          </div>
+
+          <!-- Dynamic Transcript Box -->
+          <div class="transcript-box" id="transcript-box"></div>
+
+          <!-- Simulator CTA Button -->
+          <button class="vapi-btn" id="start-sim-btn">
+            <span>▶️</span> Simulate AI Agent Call
+          </button>
+        </div>
+
+        <!-- Trust bar -->
+        <div class="trust-bar">
+          <div class="trust-item">
+            <span class="trust-val">24/7</span>
+            <span class="trust-label">Availability</span>
+          </div>
+          <div class="trust-item">
+            <span class="trust-val">&lt;1s</span>
+            <span class="trust-label">Response Time</span>
+          </div>
+          <div class="trust-item">
+            <span class="trust-val">100+</span>
+            <span class="trust-label">Languages</span>
+          </div>
+          <div class="trust-item">
+            <span class="trust-val">$0</span>
+            <span class="trust-label">Setup Fee</span>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- 3. HOW IT WORKS -->
+  <section class="how-it-works" id="how-it-works">
+    <div class="container">
+      <span class="section-eyebrow">HOW IT WORKS</span>
+      <h2 class="section-title">Live in 24 hours. Zero engineering needed.</h2>
+      
+      <div class="step-grid">
+        <div class="step-card">
+          <span class="step-num">Step 01</span>
+          <span class="step-emoji">💬</span>
+          <h3>Tell us about your business</h3>
+          <p>Provide your FAQs, agent guidelines, and calendar links. We handle the system design.</p>
+        </div>
+        <div class="step-card">
+          <span class="step-num">Step 02</span>
+          <span class="step-emoji">⚙️</span>
+          <h3>We build your agent</h3>
+          <p>Our experts build, train, and test your customized AI agent for optimal industry performance.</p>
+        </div>
+        <div class="step-card">
+          <span class="step-num">Step 03</span>
+          <span class="step-emoji">📞</span>
+          <h3>Goes live on your number</h3>
+          <p>We connect the voice agent to your existing business line or provision a dedicated local number.</p>
+        </div>
+        <div class="step-card">
+          <span class="step-num">Step 04</span>
+          <span class="step-emoji">📊</span>
+          <h3>You get qualified leads</h3>
+          <p>Receive transcript summaries, CRM integrations, and booked appointments on autopilot.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 4. INDUSTRIES -->
+  <section class="industries" id="industries">
+    <div class="container">
+      <span class="section-eyebrow">INDUSTRIES</span>
+      <h2 class="section-title">Built for businesses people call every day.</h2>
+      
+      <div class="industry-grid">
+        
+        <!-- Real Estate -->
+        <div class="industry-card">
+          <div class="industry-header">
+            <div class="industry-icon-wrapper">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="industry-icon">
+                <path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
+                <polyline points="9 22 9 12 15 12 15 22"></polyline>
+              </svg>
+            </div>
+            <h3>Real Estate</h3>
+          </div>
+          <p class="industry-desc">Qualify incoming tenant and buyer leads, handle common property questions, and coordinate property viewing appointments on your calendar instantly.</p>
+          <div class="tag-container">
+            <span class="tag-pill">Lead qualification</span>
+            <span class="tag-pill">Viewing bookings</span>
+            <span class="tag-pill">Property FAQs</span>
+          </div>
+        </div>
+
+        <!-- Healthcare -->
+        <div class="industry-card">
+          <div class="industry-header">
+            <div class="industry-icon-wrapper">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="industry-icon">
+                <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
+                <path d="M12 8v8"></path>
+                <path d="M9 12h6"></path>
+              </svg>
+            </div>
+            <h3>Healthcare</h3>
+          </div>
+          <p class="industry-desc">Automate appointments booking, send out interactive follow-up reminders, and screen standard insurance coverage queries smoothly.</p>
+          <div class="tag-container">
+            <span class="tag-pill">Appointment booking</span>
+            <span class="tag-pill">Reminders</span>
+            <span class="tag-pill">Insurance queries</span>
+          </div>
+        </div>
+
+        <!-- Education -->
+        <div class="industry-card">
+          <div class="industry-header">
+            <div class="industry-icon-wrapper">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="industry-icon">
+                <path d="M22 10v6M2 10l10-5 10 5-10 5z"></path>
+                <path d="M6 12v5c0 2 2 3 6 3s6-1 6-3v-5"></path>
+              </svg>
+            </div>
+            <h3>Education</h3>
+          </div>
+          <p class="industry-desc">Respond to admission program details, follow up on inbound student inquiries, and guide parents through class schedules automatically.</p>
+          <div class="tag-container">
+            <span class="tag-pill">Admissions</span>
+            <span class="tag-pill">Program info</span>
+            <span class="tag-pill">Lead follow-up</span>
+          </div>
+        </div>
+
+        <!-- Legal -->
+        <div class="industry-card">
+          <div class="industry-header">
+            <div class="industry-icon-wrapper">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="industry-icon">
+                <line x1="12" y1="3" x2="12" y2="21"></line>
+                <line x1="5" y1="7" x2="19" y2="7"></line>
+                <path d="M5 7c0 4.5 2 7.5 7 7.5"></path>
+                <path d="M19 7c0 4.5-2 7.5-7 7.5"></path>
+                <path d="M9 21h6"></path>
+              </svg>
+            </div>
+            <h3>Legal</h3>
+          </div>
+          <p class="industry-desc">Manage initial client intake assessments, screen general case criteria, and schedule preliminary consultations with attorneys.</p>
+          <div class="tag-container">
+            <span class="tag-pill">Client intake</span>
+            <span class="tag-pill">Case screening</span>
+            <span class="tag-pill">Consultations</span>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- 5. PRICING TEASER -->
+  <section class="pricing-teaser" id="pricing">
+    <div class="container">
+      <span class="section-eyebrow">PRICING</span>
+      <h2 class="section-title">Priced for your business size.</h2>
+      <p class="pricing-subtitle">
+        We work with solo agents, growing teams, and agencies across real estate, healthcare, education, and legal. Every business is different — let's find the right plan for you.
+      </p>
+      
+      <a href="#early-access" class="btn btn-primary pricing-btn">Talk to us about pricing →</a>
+      
+      <br>
+      
+      <div class="value-props-row">
+        <div class="value-prop">
+          <span>💳</span> No setup fees
+        </div>
+        <div class="value-prop">
+          <span>📆</span> No long-term contracts
+        </div>
+        <div class="value-prop">
+          <span>❌</span> Cancel anytime
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 6. WAITLIST / EARLY ACCESS -->
+  <section class="waitlist" id="early-access">
+    <div class="container">
+      <div class="waitlist-card">
+        <span class="badge">⚡ Now accepting early clients</span>
+        <h2 class="section-title" style="margin-bottom: 1rem;">Be First. Get Priority Access.</h2>
+        <p class="waitlist-subtitle">
+          Swaravox is launching soon. Join the waitlist and be first to get an AI voice agent built for your business. Early clients get exclusive onboarding support and locked-in rates.
+        </p>
+
+        <!-- Formspree placeholder POST action -->
+        <form class="waitlist-form" action="https://formspree.io/f/placeholder_id" method="POST">
+          <div class="form-row">
+            <div class="form-group">
+              <input type="email" name="email" class="form-input" placeholder="your@email.com" required>
+            </div>
+            <div class="form-group">
+              <select name="business_type" class="form-select" required>
+                <option value="" disabled selected>Business Type</option>
+                <option value="Real Estate">Real Estate</option>
+                <option value="Healthcare">Healthcare</option>
+                <option value="Education">Education</option>
+                <option value="Legal">Legal</option>
+                <option value="Other">Other</option>
+              </select>
+            </div>
+          </div>
+          <button type="submit" class="btn btn-primary form-submit-btn">Join the Waitlist</button>
+        </form>
+        
+        <p class="form-privacy">No spam. We'll reach out when you're next in line.</p>
+      </div>
+
+      <!-- Contact Us Sub-Section -->
+      <div class="contact-container">
+        <h3 class="contact-title">Connect with Us Directly</h3>
+        <div class="contact-methods">
+          
+          <!-- Call & WhatsApp -->
+          <div class="contact-method-card">
+            <h4>Call or WhatsApp</h4>
+            <div class="contact-row-group">
+              <a href="tel:+919949065640" class="contact-link-item">
+                <span>📞</span> +91 99490 65640
+              </a>
+              <a href="https://wa.me/919949065640" target="_blank" class="whatsapp-badge">
+                <span>💬</span> WhatsApp
+              </a>
+            </div>
+            <div class="contact-row-group" style="margin-top: 0.5rem;">
+              <a href="tel:+917673932391" class="contact-link-item">
+                <span>📞</span> +91 76739 32391
+              </a>
+              <a href="https://wa.me/917673932391" target="_blank" class="whatsapp-badge">
+                <span>💬</span> WhatsApp
+              </a>
+            </div>
+          </div>
+
+          <!-- Email -->
+          <div class="contact-method-card">
+            <h4>Email Support</h4>
+            <a href="mailto:iam.swaravox@gmail.com" class="contact-link-item" style="word-break: break-all;">
+              <span>✉️</span> iam.swaravox@gmail.com
+            </a>
+            <a href="mailto:abhilashbolla846@gmail.com" class="contact-link-item" style="word-break: break-all; margin-top: 0.5rem;">
+              <span>✉️</span> abhilashbolla846@gmail.com
+            </a>
+          </div>
+
+          <!-- Socials -->
+          <div class="contact-method-card">
+            <h4>Follow Swaravox</h4>
+            <a href="https://x.com/Swaravox" target="_blank" class="contact-link-item">
+              <span>🐦</span> X (Twitter)
+            </a>
+            <a href="https://instagram.com/Swaravox" target="_blank" class="contact-link-item" style="margin-top: 0.5rem;">
+              <span>📸</span> Instagram
+            </a>
+            <a href="https://linkedin.com/company/swaravox" target="_blank" class="contact-link-item" style="margin-top: 0.5rem;">
+              <span>💼</span> LinkedIn
+            </a>
+          </div>
+
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- 7. FOOTER -->
+  <footer>
+    <div class="container">
+      <div class="footer-content">
+        <a href="#" class="footer-logo">Swaravox<span>AI</span></a>
+        
+        <div class="footer-links">
+          <a href="#how-it-works">How It Works</a>
+          <a href="#industries">Industries</a>
+          <a href="#pricing">Pricing</a>
+        </div>
+        
+        <p class="footer-copy">&copy; <span id="current-year">2026</span> Swaravox. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // Set dynamic current year in footer
+    document.getElementById('current-year').innerText = new Date().getFullYear();
+
+    // 1. Navbar Frosted Glass effect on Scroll
+    const navbar = document.getElementById('navbar');
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > 20) {
+        navbar.classList.add('scrolled');
+      } else {
+        navbar.classList.remove('scrolled');
+      }
+    });
+
+    // 2. Mobile Nav Toggle
+    const navToggle = document.getElementById('nav-toggle');
+    const mobileMenu = document.getElementById('mobile-menu');
+    const mobileLinks = document.querySelectorAll('.mobile-link');
+
+    const toggleMobileMenu = () => {
+      navToggle.classList.toggle('open');
+      mobileMenu.classList.toggle('open');
+    };
+
+    navToggle.addEventListener('click', toggleMobileMenu);
+    
+    mobileLinks.forEach(link => {
+      link.addEventListener('click', () => {
+        navToggle.classList.remove('open');
+        mobileMenu.classList.remove('open');
+      });
+    });
+
+    // 3. Interactive Call Simulator
+    const conversations = {
+      'real-estate': [
+        { role: 'assistant', text: "Hi, thanks for calling Premier Realty. I'm Aria, your AI voice assistant. Are you looking to buy, sell, or rent?" },
+        { role: 'user', text: "I'm looking to buy a 3-bedroom house in Sydney." },
+        { role: 'assistant', text: "Great! I can help with that. What is your budget range for this property?" },
+        { role: 'user', text: "Around 1.2 to 1.5 million AUD." },
+        { role: 'assistant', text: "Perfect. We have a few matching listings. Would you like me to book a viewing for this Saturday morning?" },
+        { role: 'user', text: "Yes, Saturday morning at 10 AM works." },
+        { role: 'assistant', text: "All set! I've booked you in for Saturday at 10 AM. You will receive a confirmation text shortly. Have a great day!" }
+      ],
+      'healthcare': [
+        { role: 'assistant', text: "Hello! Thank you for calling Metro Health Clinic. I am Aria, their AI medical assistant. Are you calling to book a new appointment?" },
+        { role: 'user', text: "Yes, I need to see Dr. Smith this week." },
+        { role: 'assistant', text: "Dr. Smith has availability on Wednesday at 2 PM or Thursday at 10 AM. Which one works best?" },
+        { role: 'user', text: "Wednesday at 2 PM is perfect." },
+        { role: 'assistant', text: "Got it. May I know the reason for your visit?" },
+        { role: 'user', text: "Just a general checkup." },
+        { role: 'assistant', text: "Thank you. Your appointment with Dr. Smith is confirmed for Wednesday at 2 PM. We've sent details to your number!" }
+      ],
+      'education': [
+        { role: 'assistant', text: "Hi, thank you for contacting Apex Academy Admissions. I'm Aria, how can I help you today?" },
+        { role: 'user', text: "I want to know about the Data Science program." },
+        { role: 'assistant', text: "Our Data Science program is a 12-week intensive course. Are you looking for online or on-campus classes?" },
+        { role: 'user', text: "Online classes." },
+        { role: 'assistant', text: "Excellent. Online cohorts start next month. Would you like me to email you the syllabus and fee structure?" },
+        { role: 'user', text: "Yes, please send it." },
+        { role: 'assistant', text: "Sent! I've sent the prospectus to your email. I'll have an advisor follow up tomorrow. Have a great day!" }
+      ],
+      'legal': [
+        { role: 'assistant', text: "Welcome to Sentinel Law Chambers. I'm Aria, their AI intake assistant. Are you calling about a new legal matter?" },
+        { role: 'user', text: "Yes, I need help with a contract dispute." },
+        { role: 'assistant', text: "I can assist with client intake. Have you already received a formal notice or lawsuit from the other party?" },
+        { role: 'user', text: "Yes, yesterday." },
+        { role: 'assistant', text: "Understood. I will flag this as urgent for our dispute resolution team. Let's schedule a 15-minute intake call for tomorrow morning." },
+        { role: 'user', text: "Tomorrow at 9 AM works." },
+        { role: 'assistant', text: "Perfect. Scheduled! Our intake team will review your case details and call you tomorrow at 9 AM. Thank you." }
+      ]
+    };
+
+    let simInterval = null;
+    let currentStep = 0;
+    let isSimulating = false;
+
+    const startSimBtn = document.getElementById('start-sim-btn');
+    const simIndustrySelect = document.getElementById('sim-industry');
+    const statusText = document.getElementById('status-text');
+    const transcriptBox = document.getElementById('transcript-box');
+    const waveform = document.getElementById('waveform');
+    const widgetContainer = document.getElementById('widget-container');
+
+    function appendTranscript(role, text) {
+      if (transcriptBox.style.display !== 'block') {
+        transcriptBox.style.display = 'block';
+      }
+      
+      const line = document.createElement('div');
+      line.className = `transcript-line ${role}`;
+      if (role === 'assistant') {
+        line.innerHTML = `<span class="role-label">Aria:</span> ${text}`;
+      } else {
+        line.innerHTML = `<span class="role-label">You:</span> ${text}`;
+      }
+      transcriptBox.appendChild(line);
+      transcriptBox.scrollTop = transcriptBox.scrollHeight;
+    }
+
+    function runSimulationStep() {
+      const selectedIndustry = simIndustrySelect.value;
+      const script = conversations[selectedIndustry];
+
+      if (currentStep >= script.length) {
+        stopSimulation();
+        statusText.innerText = "Call simulated successfully. Lead qualified and action booked!";
+        statusText.style.color = "var(--success)";
+        return;
+      }
+
+      const currentMessage = script[currentStep];
+      
+      if (currentMessage.role === 'assistant') {
+        statusText.innerText = "Aria is speaking...";
+        statusText.style.color = "var(--accent)";
+        waveform.classList.add('active');
+        
+        simInterval = setTimeout(() => {
+          appendTranscript('assistant', currentMessage.text);
+          currentStep++;
+          simInterval = setTimeout(runSimulationStep, 2000);
+        }, 1200);
+      } else {
+        statusText.innerText = "Listening...";
+        statusText.style.color = "var(--text-primary)";
+        waveform.classList.remove('active');
+        
+        simInterval = setTimeout(() => {
+          appendTranscript('user', currentMessage.text);
+          currentStep++;
+          simInterval = setTimeout(runSimulationStep, 1500);
+        }, 1500);
+      }
+    }
+
+    function startSimulation() {
+      isSimulating = true;
+      currentStep = 0;
+      transcriptBox.innerHTML = '';
+      transcriptBox.style.display = 'block';
+      widgetContainer.classList.add('active-call');
+      simIndustrySelect.disabled = true;
+      
+      startSimBtn.classList.add('active');
+      startSimBtn.innerHTML = `<span>⏹</span> Stop Simulation`;
+      
+      runSimulationStep();
+    }
+
+    function stopSimulation() {
+      isSimulating = false;
+      clearTimeout(simInterval);
+      currentStep = 0;
+      simIndustrySelect.disabled = false;
+      waveform.classList.remove('active');
+      widgetContainer.classList.remove('active-call');
+      
+      startSimBtn.classList.remove('active');
+      startSimBtn.innerHTML = `<span>▶️</span> Simulate AI Agent Call`;
+      
+      statusText.innerText = "Simulation stopped. Ready to start again.";
+      statusText.style.color = "var(--text-muted)";
+    }
+
+    startSimBtn.addEventListener('click', () => {
+      if (isSimulating) {
+        stopSimulation();
+      } else {
+        startSimulation();
+      }
+    });
+  </script>
+</body>
+</html>
