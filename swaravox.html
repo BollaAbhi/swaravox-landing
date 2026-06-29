@@ -864,96 +864,87 @@
       text-align: center;
     }
 
-    /* Direct Contact Details Section */
-    .contact-container {
-      margin-top: 5rem;
-      text-align: center;
-    }
-    
-    .contact-title {
-      font-size: 2.2rem;
-      margin-bottom: 2.5rem;
-      color: var(--text-primary);
-    }
-    
-    .contact-methods {
+    /* Direct Contact Grid inside the card */
+    .direct-contact-grid {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
       gap: 1.5rem;
-      max-width: 960px;
-      margin: 0 auto;
+      margin-top: 2.5rem;
       text-align: left;
+      border-top: 1px solid var(--border);
+      padding-top: 2rem;
     }
     
-    .contact-method-card {
-      background-color: var(--card);
-      border: 1px solid var(--border);
-      border-radius: 12px;
-      padding: 2.2rem 2rem;
+    .sim-contact-item {
       display: flex;
-      flex-direction: column;
-      gap: 1.2rem;
+      gap: 0.8rem;
+    }
+    
+    .sim-contact-icon {
+      font-size: 1.5rem;
+      line-height: 1;
+    }
+    
+    .sim-contact-details h5 {
+      font-family: 'Inter', sans-serif;
+      font-size: 0.85rem;
+      font-weight: 700;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      margin-bottom: 0.6rem;
+    }
+    
+    .sim-contact-link {
+      font-size: 0.95rem;
+      color: var(--text-primary);
+      font-weight: 600;
+      transition: color var(--transition);
+    }
+    
+    .sim-contact-link:hover {
+      color: var(--accent);
+    }
+    
+    .sim-wa-badge {
+      display: inline-flex;
+      align-items: center;
+      background-color: rgba(16, 185, 129, 0.08);
+      border: 1px solid rgba(16, 185, 129, 0.2);
+      color: var(--success);
+      font-size: 0.7rem;
+      font-weight: 700;
+      padding: 0.15rem 0.5rem;
+      border-radius: 4px;
+      margin-left: 0.5rem;
       transition: all var(--transition);
     }
     
-    .contact-method-card:hover {
-      border-color: var(--accent);
-      box-shadow: 0 15px 30px rgba(245, 166, 35, 0.05);
-      transform: translateY(-2px);
+    .sim-wa-badge:hover {
+      background-color: var(--success);
+      color: #050A18;
     }
     
-    .contact-method-card h4 {
-      font-family: 'Inter', sans-serif;
-      font-size: 0.95rem;
-      font-weight: 700;
-      color: var(--text-primary);
-      text-transform: uppercase;
-      letter-spacing: 0.08em;
-      border-bottom: 1px solid var(--border);
-      padding-bottom: 0.6rem;
-      margin-bottom: 0.2rem;
-    }
-    
-    .contact-link-item {
-      display: inline-flex;
+    .sim-contact-links {
+      display: flex;
       align-items: center;
-      gap: 0.6rem;
-      font-size: 0.95rem;
+    }
+    
+    .sim-social-links {
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+    }
+    
+    .sim-social-link {
+      font-size: 0.9rem;
       color: var(--text-primary);
       font-weight: 500;
       transition: color var(--transition);
     }
     
-    .contact-link-item:hover {
+    .sim-social-link:hover {
       color: var(--accent);
-    }
-    
-    .whatsapp-badge {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.4rem;
-      background-color: rgba(16, 185, 129, 0.08);
-      border: 1px solid rgba(16, 185, 129, 0.2);
-      color: var(--success);
-      font-size: 0.75rem;
-      font-weight: 600;
-      padding: 0.25rem 0.6rem;
-      border-radius: 4px;
-      transition: all var(--transition);
-    }
-    
-    .whatsapp-badge:hover {
-      background-color: var(--success);
-      color: #050A18;
-      box-shadow: 0 0 10px rgba(16, 185, 129, 0.3);
-    }
-    
-    .contact-row-group {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 0.5rem;
-      flex-wrap: wrap;
     }
 
     /* 7. FOOTER */
@@ -1122,10 +1113,9 @@
         grid-template-columns: 1fr;
       }
 
-      .contact-methods {
+      .direct-contact-grid {
         grid-template-columns: 1fr;
-        max-width: 480px;
-        margin: 0 auto;
+        gap: 2rem;
       }
 
       .footer-content {
@@ -1432,88 +1422,55 @@
     </div>
   </section>
 
-  <!-- 6. WAITLIST / EARLY ACCESS -->
+  <!-- 6. CONTACT SECTION -->
   <section class="waitlist" id="early-access">
     <div class="container">
       <div class="waitlist-card">
-        <span class="badge">⚡ Now accepting early clients</span>
-        <h2 class="section-title" style="margin-bottom: 1rem;">Be First. Get Priority Access.</h2>
-        <p class="waitlist-subtitle">
-          Swaravox is launching soon. Join the waitlist and be first to get an AI voice agent built for your business. Early clients get exclusive onboarding support and locked-in rates.
+        <span class="badge">⚡ Now accepting clients</span>
+        <h2 class="section-title" style="margin-bottom: 1rem;">Get in Touch. Let's Build Your Agent.</h2>
+        <p class="waitlist-subtitle" style="max-width: 720px; margin: 0 auto;">
+          Ready to deploy an intelligent voice agent for your business? Connect with us directly via phone, WhatsApp, email, or socials for a free consultation and custom interactive demo.
         </p>
 
-        <!-- Formspree placeholder POST action -->
-        <form class="waitlist-form" action="https://formspree.io/f/placeholder_id" method="POST">
-          <div class="form-row">
-            <div class="form-group">
-              <input type="email" name="email" class="form-input" placeholder="your@email.com" required>
-            </div>
-            <div class="form-group">
-              <select name="business_type" class="form-select" required>
-                <option value="" disabled selected>Business Type</option>
-                <option value="Real Estate">Real Estate</option>
-                <option value="Healthcare">Healthcare</option>
-                <option value="Education">Education</option>
-                <option value="Legal">Legal</option>
-                <option value="Other">Other</option>
-              </select>
-            </div>
-          </div>
-          <button type="submit" class="btn btn-primary form-submit-btn">Join the Waitlist</button>
-        </form>
-        
-        <p class="form-privacy">No spam. We'll reach out when you're next in line.</p>
-      </div>
-
-      <!-- Contact Us Sub-Section -->
-      <div class="contact-container">
-        <h3 class="contact-title">Connect with Us Directly</h3>
-        <div class="contact-methods">
+        <div class="direct-contact-grid">
           
           <!-- Call & WhatsApp -->
-          <div class="contact-method-card">
-            <h4>Call or WhatsApp</h4>
-            <div class="contact-row-group">
-              <a href="tel:+919949065640" class="contact-link-item">
-                <span>📞</span> +91 99490 65640
-              </a>
-              <a href="https://wa.me/919949065640" target="_blank" class="whatsapp-badge">
-                <span>💬</span> WhatsApp
-              </a>
-            </div>
-            <div class="contact-row-group" style="margin-top: 0.5rem;">
-              <a href="tel:+917673932391" class="contact-link-item">
-                <span>📞</span> +91 76739 32391
-              </a>
-              <a href="https://wa.me/917673932391" target="_blank" class="whatsapp-badge">
-                <span>💬</span> WhatsApp
-              </a>
+          <div class="sim-contact-item">
+            <span class="sim-contact-icon">📞</span>
+            <div class="sim-contact-details">
+              <h5>Call or WhatsApp Us</h5>
+              <div class="sim-contact-links">
+                <a href="tel:+919949065640" class="sim-contact-link">+91 99490 65640</a>
+                <a href="https://wa.me/919949065640" target="_blank" class="sim-wa-badge">WhatsApp</a>
+              </div>
+              <div class="sim-contact-links" style="margin-top: 0.6rem;">
+                <a href="tel:+917673932391" class="sim-contact-link">+91 76739 32391</a>
+                <a href="https://wa.me/917673932391" target="_blank" class="sim-wa-badge">WhatsApp</a>
+              </div>
             </div>
           </div>
-
+          
           <!-- Email -->
-          <div class="contact-method-card">
-            <h4>Email Support</h4>
-            <a href="mailto:iam.swaravox@gmail.com" class="contact-link-item" style="word-break: break-word;">
-              <span>✉️</span> iam.swaravox@gmail.com
-            </a>
-            <a href="mailto:abhilashbolla846@gmail.com" class="contact-link-item" style="word-break: break-word; margin-top: 0.5rem;">
-              <span>✉️</span> abhilashbolla846@gmail.com
-            </a>
+          <div class="sim-contact-item">
+            <span class="sim-contact-icon">✉️</span>
+            <div class="sim-contact-details">
+              <h5>Email Support</h5>
+              <a href="mailto:iam.swaravox@gmail.com" class="sim-contact-link">iam.swaravox@gmail.com</a>
+              <a href="mailto:abhilashbolla846@gmail.com" class="sim-contact-link" style="margin-top: 0.6rem; display: block;">abhilashbolla846@gmail.com</a>
+            </div>
           </div>
-
+          
           <!-- Socials -->
-          <div class="contact-method-card">
-            <h4>Follow Swaravox</h4>
-            <a href="https://x.com/Swaravox" target="_blank" class="contact-link-item">
-              <span>🐦</span> X (Twitter)
-            </a>
-            <a href="https://instagram.com/Swaravox" target="_blank" class="contact-link-item" style="margin-top: 0.5rem;">
-              <span>📸</span> Instagram
-            </a>
-            <a href="https://linkedin.com/company/swaravox" target="_blank" class="contact-link-item" style="margin-top: 0.5rem;">
-              <span>💼</span> LinkedIn
-            </a>
+          <div class="sim-contact-item">
+            <span class="sim-contact-icon">🌐</span>
+            <div class="sim-contact-details">
+              <h5>Follow Swaravox</h5>
+              <div class="sim-social-links">
+                <a href="https://x.com/Swaravox" target="_blank" class="sim-social-link">🐦 X (Twitter)</a>
+                <a href="https://instagram.com/Swaravox" target="_blank" class="sim-social-link">📸 Instagram</a>
+                <a href="https://linkedin.com/company/swaravox" target="_blank" class="sim-social-link">💼 LinkedIn</a>
+              </div>
+            </div>
           </div>
 
         </div>
